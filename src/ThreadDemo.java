@@ -27,5 +27,14 @@ public class ThreadDemo extends Thread{
         if (n==null) n=new Integer(1);
         else n= new Integer(n.intValue()+1);
         numcalls.set(n);
+        System.out.println(Thread.currentThread().getName()+": "+n);
+        //что-то вычисляем
+        for (int i=0, j=0; i<1000000; i++) j+=i;
+        try {
+            Thread.sleep((int)Math.random()*100+1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Thread.yield();
     }
 }
